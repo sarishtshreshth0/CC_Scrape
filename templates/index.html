@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CodeChef Scraper</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        form {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            flex: 1;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            background: #00c6ff;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 114, 255, 0.4);
+        }
+
+        .code-block {
+            background: #111;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            border-left: 5px solid #00c6ff;
+        }
+
+        .code-block::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .code-block::-webkit-scrollbar-thumb {
+            background: #00c6ff;
+            border-radius: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0.6;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🚀 CodeChef Submission Scraper</h2>
+
+    <form action="/scrape" method="POST">
+        <input type="text" name="problem" placeholder="Enter Problem Code (e.g. DICEERMAX)">
+        <button type="submit">Fetch Code</button>
+    </form>
+
+    {% for code in codes %}
+        <div class="code-block">
+<pre>{{ code }}</pre>
+        </div>
+    {% endfor %}
+
+    <div class="footer">
+        Built with ❤️ using Flask + Selenium
+    </div>
+</div>
+
+</body>
+</html>
